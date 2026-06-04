@@ -29,3 +29,22 @@ El sistema funciona como un pipeline de datos que se encarga de:
 
 Para verificar la conexión inicial con la API de la tienda:
 - python sincronizador.py
+
+## Arquitectura del Proyecto
+
+El sistema funciona como un pipeline de datos que se encarga de...
+
+![Arquitectura Global del Sistema](docs/arquitectura_global.png)
+
+## Modelo de Datos (DER)
+
+![Diagrama Entidad-Relación](docs/der_egolf.png)
+
+### Diccionario de Datos
+
+El sistema utiliza un modelo relacional (SQLite/PostgreSQL) centrado en el producto, separando la información estructural de las variables comerciales volátiles.
+
+* **`Producto` (Entidad Central):** Almacena la estructura inmutable del catálogo. El `SKU` actúa como identificador principal, vinculando el sistema físico con los IDs internos de la API de Tiendanube (`id_tiendanube`, `id_variante_tiendanube`).
+* **`Regla_Precio` (1:1 con Producto):** Aísla la lógica comercial. Utiliza el SKU como PK/FK compartida para garantizar que cada producto tenga un único margen de rentabilidad (`porcentaje_markup`). Permite actualizaciones masivas de precios sin riesgo de corromper la tabla estructural.
+* **`Proveedor` (Entidad de Origen):** Cataloga a los emisores de listas de precios, definiendo su canal de ingesta (`Método_actualizacion`: web, excel, mail).
+* **`Costo` (Tabla Transaccional / Historial):** Resuelve la relación N:M entre proveedores y productos. Registra cada variación de precio (`costo_base`) en el tiempo (`fecha_actualizacion`), permitiendo auditoría y evitando la pérdida de datos históricos.

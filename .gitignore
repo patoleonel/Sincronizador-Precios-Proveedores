@@ -1,1 +1,13 @@
+# Entorno virtual
+venv/
+.conda/
+
+# Credenciales y seguridad
 .env
+
+# Base de datos local
+*.db
+
+# Archivos de datos locales (Google Sheets / Proveedores)
+*.csv
+*.xlsx
