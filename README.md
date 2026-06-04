@@ -34,11 +34,11 @@ Para verificar la conexión inicial con la API de la tienda:
 
 El sistema funciona como un pipeline de datos que se encarga de...
 
-![Arquitectura Global del Sistema](docs/arquitectura_global.png)
+![Arquitectura Global del Sistema](docs/arquitectura_global.svg)
 
 ## Modelo de Datos (DER)
 
-![Diagrama Entidad-Relación](docs/der_egolf.png)
+![Diagrama Entidad-Relación](docs/der_egolf.svg)
 
 ### Diccionario de Datos
 
