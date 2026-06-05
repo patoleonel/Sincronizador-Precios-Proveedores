@@ -11,3 +11,4 @@ venv/
 # Archivos de datos locales (Google Sheets / Proveedores)
 *.csv
 *.xlsx
+*.sql
